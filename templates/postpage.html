@@ -1,0 +1,30 @@
+<html>
+	<head>
+		<title>LivePost</title>
+		<link rel="icon" href="/static/img/favicon.ico" />
+		<script type="text/javascript" src="http://d3js.org/d3.v2.min.js"></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+		<style type="text/css">
+			body {
+			  background: #222;
+			}
+			circle {
+			  fill: none;
+			  stroke-width: 1.5px;
+			}
+    	</style>
+	</head>
+	<body>
+		<h3 style="color:white;">LivePost</h3>
+		<p id="num_clients" style="color:white;"><p>
+		<form id="textField">
+			<input type="text" id="text"></input>
+			<button type="button" onclick="postText();">Submit</button>
+		</form>
+		<p id="livepost"></p>
+		<div id="messageBoard" style="color:white;">
+		</div>
+	</body>
+	<script type="text/javascript" src="/static/js/circles.js"></script>
+	<script type="text/javascript" src="/static/js/posttext.js"></script>
+</html>
