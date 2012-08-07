@@ -1,12 +1,14 @@
 <html>
 	<head>
-		<title>LivePost</title>
-		<link rel="icon" href="/static/img/favicon.ico" />
+		<title>DrawWithMe</title>
+		<link rel="icon" href="/static/img/favicon.ico"/>
 		<script type="text/javascript" src="http://d3js.org/d3.v2.min.js"></script>
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+		<link href='http://fonts.googleapis.com/css?family=Capriola' rel='stylesheet' type='text/css'>
 		<style type="text/css">
 			body {
 			  background: #222;
+			  font-family: 'Capriola', sans-serif;
 			}
 			circle {
 			  fill: none;
@@ -15,14 +17,13 @@
     	</style>
 	</head>
 	<body>
-		<h3 style="color:white;">LivePost</h3>
-		<p id="num_clients" style="color:white;"><p>
-		<form id="textField">
-			<input type="text" id="text"></input>
-			<button type="button" onclick="postText();">Submit</button>
+		<h1 style="color:white; position:absolute; left:620px">DrawWithMe</h1>
+		<p id="num_clients" style="color:white; position:absolute; left:1350px"><p>
+		<form id="textField" style="position:absolute; top:70px;">
+			<input type="text" id="text" style="width:200px; height:25px;"></input>
+			<button type="button" onclick="postText();" style="height:25px;">Submit</button>
 		</form>
-		<p id="livepost"></p>
-		<div id="messageBoard" style="color:white;">
+		<div id="messageBoard" style="color:white; font-size:8pt; position:absolute; left:10px; top:100px; border-top-style:dotted; border-top-color:white; border-top-width:1px; width:260; height:720">
 		</div>
 	</body>
 	<script type="text/javascript" src="/static/js/circles.js"></script>

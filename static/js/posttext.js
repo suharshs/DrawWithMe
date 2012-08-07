@@ -1,6 +1,10 @@
 var ws = new WebSocket("ws://localhost:8888/websocket");
 ws.onmessage = function(event) {
 	data = $.parseJSON(event.data)
+	if (data.message === 'resetprev'){
+		prev = {"x":null,"y":null};
+		return;
+	}
 	try{
 		message = $.parseJSON(data.message);
 		particle(message.x,message.y);
@@ -10,6 +14,13 @@ ws.onmessage = function(event) {
 		displayCount(data.count);
 	}
 };
+// Allow enter to also do the submit
+$('#text').keypress(function(event){
+	if (event.keyCode == 13){
+		event.preventDefault();
+		postText();
+	}
+});
 
 function postText(){
 	ws.send($("#text").val());
@@ -24,10 +35,10 @@ function displayMessage(message){
 
 function displayCount(count){
 	if (data.count === 1){
-		text = "There is currently " + data.count + " user.";
+		text = data.count + " user online.";
 	}
 	else{
-		text = "There are currently " + data.count + " users.";
+		text = data.count + " users online.";
 	}
 	$("#num_clients").text(text);
 }
