@@ -13,8 +13,9 @@ Goals
 
 Technologies Used
 -----------------
-* Tornado
-* HTML5 websockets
-* JQuery
+* [Tornado](http://www.tornadoweb.org/)
+* [HTML5 websockets](http://www.tornadoweb.org/documentation/websocket.html)
+* [JQuery](http://jquery.com/)
+* [d3.js](http://d3js.org/)
 
 Note: I made one version of the application using long-polling with the JQuery.ajax function but this turned out to be extremely inefficient compared to using HTML5 websockets along with the tornado.websockets module.
