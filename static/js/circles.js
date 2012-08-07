@@ -55,6 +55,6 @@ function particle(x,y) {
 function sendDrawData(){
   if (MouseDown){
     var m = d3.svg.mouse(this);
-    ws.send('{"x":' + m[0] + ',"y":' + m[1] + '}');
+    ws.send('{"x":' + (m[0]+270/12) + ',"y":' + (m[1]+100/12) + '}');
   }
 }

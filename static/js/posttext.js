@@ -1,6 +1,6 @@
 var ws = new WebSocket("ws://localhost:8888/websocket");
 ws.onmessage = function(event) {
-	data = $.parseJSON(event.data)
+	var data = $.parseJSON(event.data)
 	if (data.message === 'resetprev'){
 		prev = {"x":null,"y":null};
 		return;
@@ -28,17 +28,17 @@ function postText(){
 }
 
 function displayMessage(message){
-	if (data.message !== ""){
-		$("#messageBoard").prepend("<p style='color:white;'>" + data.message + "</p>");
+	if (message !== ""){
+		$("#messageBoard").prepend("<p style='color:white;'>" + message + "</p>");
 	}
 }
 
 function displayCount(count){
-	if (data.count === 1){
-		text = data.count + " user online.";
+	if (count === 1){
+		text = count + " user online.";
 	}
 	else{
-		text = data.count + " users online.";
+		text = count + " users online.";
 	}
 	$("#num_clients").text(text);
 }
