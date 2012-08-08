@@ -5,7 +5,7 @@ $(document).ready(function() {
         MouseDown = true;
     })
     .mouseup(function() {
-        ws.send('resetprev')
+        ws.send('{"message":"resetprev", "sender":' + user_id + '}')
         MouseDown = false;
     });
 });
@@ -33,28 +33,28 @@ var svg = d3.select("body").append("svg:svg")
     .style("border-top-color", "white")
     .on("mousemove", sendDrawData);
 
-function particle(x,y) {
+function particle(x,y, sender) {
   svg.append("svg:circle")
       .attr("cx", x)
       .attr("cy", y)
       .attr("r", 1)
       .style("stroke", z(++i))
       .style("stroke-opacity", 1)
-  if (prev.x !== null){
+  if (typeof(users[parseInt(sender)].x) === 'number'){
     svg.append("svg:line")
-      .attr('x1',prev.x)
-      .attr('y1',prev.y)
+      .attr('x1',users[sender].x)
+      .attr('y1',users[sender].y)
       .attr('x2',x)
       .attr('y2',y)
       .style("stroke", z(i))
       .style("stroke-width", 3);
   }
-  prev = {"x":x,"y":y};
+  users[sender] = {"x":x,"y":y};
 }
 
 function sendDrawData(){
   if (MouseDown){
     var m = d3.svg.mouse(this);
-    ws.send('{"x":' + (m[0]+270/12) + ',"y":' + (m[1]+100/12) + '}');
+    ws.send('{"message":{"x":' + (m[0]+270/12) + ',"y":' + (m[1]+100/12) + '}, "sender":' + user_id + '}');
   }
 }

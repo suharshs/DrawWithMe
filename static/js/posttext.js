@@ -1,15 +1,24 @@
 var ws = new WebSocket("ws://localhost:8888/websocket");
+var users = {};
 ws.onmessage = function(event) {
-	var data = $.parseJSON(event.data)
-	if (data.message === 'resetprev'){
-		prev = {"x":null,"y":null};
+	var data = $.parseJSON(event.data);
+	var message = data.message
+	if (data.first === 'True'){
+		user_id = data.sender;
+		users = data.users;
+		displayCount(data.count);
+	}
+	else if (message === 'resetprev'){
+		users[data.sender] = {"x":null,"y":null};
 		return;
+	}	
+	else if (typeof(message.x) === 'number'){
+		particle(message.x,message.y, data.sender);
 	}
-	try{
-		message = $.parseJSON(data.message);
-		particle(message.x,message.y);
-	}
-	catch(err){
+	else{
+		if (data.users != undefined){
+			users = data.users;
+		}
 		displayMessage(data.message);
 		displayCount(data.count);
 	}
@@ -23,7 +32,7 @@ $('#text').keypress(function(event){
 });
 
 function postText(){
-	ws.send($("#text").val());
+	ws.send('{"message":"' + $("#text").val() + '", "sender":' + user_id + '}');
 	$("#text").val('')
 }
 
