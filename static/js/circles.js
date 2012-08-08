@@ -15,8 +15,8 @@ var w = 1280,
     color = "white";
     i = 0;
 
-
 var svg = d3.select("body").append("svg:svg")
+    .attr("id", "svg")
     .attr("width", w)
     .attr("height", h)
     .style("pointer-events", "all")
@@ -31,8 +31,10 @@ var svg = d3.select("body").append("svg:svg")
     .style("border-top-color", "white")
     .on("mousemove", sendDrawData);
 
+var elements = [];
+
 function particle(x,y, sender, color) {
-  svg.append("svg:circle")
+  var circle = svg.append("svg:circle")
       .attr("cx", x)
       .attr("cy", y)
       .attr("r", 1)
@@ -40,7 +42,7 @@ function particle(x,y, sender, color) {
       .style("stroke-opacity", 1)
       .style("fill", color)
   if (typeof(users[parseInt(sender)].x) === 'number'){
-    svg.append("svg:line")
+    var line = svg.append("svg:line")
       .attr('x1',users[sender].x)
       .attr('y1',users[sender].y)
       .attr('x2',x)
@@ -56,4 +58,14 @@ function sendDrawData(){
     var m = d3.svg.mouse(this);
     ws.send('{"message":{"x":' + (m[0]) + ',"y":' + (m[1]) + ',"color":"' + color + '"}, "sender":' + user_id + '}');
   }
+}
+
+//send the clear message
+$("#clear").click(function(){
+  ws.send('{"message":"clear", "sender":' + user_id + '}');
+});
+
+function clear(){
+  d3.selectAll("circle").remove();
+  d3.selectAll("line").remove();
 }

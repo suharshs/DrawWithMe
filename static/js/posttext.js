@@ -11,7 +11,10 @@ ws.onmessage = function(event) {
 	else if (message === 'resetprev'){
 		users[data.sender] = {"x":null,"y":null};
 		return;
-	}	
+	}
+	else if (message === 'clear'){
+		clear();
+	}
 	else if (typeof(message.x) === 'number'){
 		particle(message.x,message.y, data.sender, message.color);
 	}

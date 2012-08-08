@@ -32,7 +32,8 @@
 			<input type="text" id="text" style="width:200px; height:25px;"></input>
 			<button type="button" onclick="postText();" style="height:25px;">Submit</button>
 		</form>
-		<div id="messageBoard" style="color:white; font-size:8pt; position:absolute; left:10px; top:100px; border-top-style:dotted; border-top-color:white; border-top-width:1px; width:260; height:800"></div>
+		<button id="clear" type="button" style="height:25px; position:absolute; left:1500px; top:70px;">Clear</button>
+		<div id="messageBoard" style="color:white; font-size:8pt; position:absolute; left:10px; top:100px; border-top-style:dotted; border-top-color:white; border-top-width:1px; width:260; height:800; overflow:hidden;"></div>
 		<div id="palette" style="color:white; font-size:8pt; position:absolute; left:1550px; top:100px; border-top-style:dotted; border-top-color:white; border-top-width:1px; width:85; height:800; border-left-style:dotted; border-left-color:white; border-left-width:1px;">
 			<p></p>
 			<div id="white" style="background:white; border-color:white; opacity:1;" class="palette"></div>
@@ -53,7 +54,6 @@
 			<p></p>
 			<div id="#A52A2A" style="background:#A52A2A; border-color:#A52A2A;" class="palette"></div>
 			<p></p>
-			
 		</div>
 	</body>
 	<script type="text/javascript" src="/static/js/circles.js"></script>
