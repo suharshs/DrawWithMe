@@ -13,7 +13,7 @@ ws.onmessage = function(event) {
 		return;
 	}	
 	else if (typeof(message.x) === 'number'){
-		particle(message.x,message.y, data.sender);
+		particle(message.x,message.y, data.sender, message.color);
 	}
 	else{
 		if (data.users != undefined){

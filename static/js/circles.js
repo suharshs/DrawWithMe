@@ -10,11 +10,9 @@ $(document).ready(function() {
     });
 });
 
-var prev = {"x":null,"y":null};
-
-var w = 1200,
-    h = 720,
-    z = d3.scale.category20c(),
+var w = 1280,
+    h = 800,
+    color = "white";
     i = 0;
 
 
@@ -33,21 +31,22 @@ var svg = d3.select("body").append("svg:svg")
     .style("border-top-color", "white")
     .on("mousemove", sendDrawData);
 
-function particle(x,y, sender) {
+function particle(x,y, sender, color) {
   svg.append("svg:circle")
       .attr("cx", x)
       .attr("cy", y)
       .attr("r", 1)
-      .style("stroke", z(++i))
+      .style("stroke", color)
       .style("stroke-opacity", 1)
+      .style("fill", color)
   if (typeof(users[parseInt(sender)].x) === 'number'){
     svg.append("svg:line")
       .attr('x1',users[sender].x)
       .attr('y1',users[sender].y)
       .attr('x2',x)
       .attr('y2',y)
-      .style("stroke", z(i))
-      .style("stroke-width", 3);
+      .style("stroke", color)
+      .style("stroke-width", 4);
   }
   users[sender] = {"x":x,"y":y};
 }
@@ -55,6 +54,6 @@ function particle(x,y, sender) {
 function sendDrawData(){
   if (MouseDown){
     var m = d3.svg.mouse(this);
-    ws.send('{"message":{"x":' + (m[0]+270/12) + ',"y":' + (m[1]+100/12) + '}, "sender":' + user_id + '}');
+    ws.send('{"message":{"x":' + (m[0]) + ',"y":' + (m[1]) + ',"color":"' + color + '"}, "sender":' + user_id + '}');
   }
 }

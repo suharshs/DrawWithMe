@@ -10,22 +10,53 @@
 			  background: #222;
 			  font-family: 'Capriola', sans-serif;
 			}
-			circle {
-			  fill: none;
-			  stroke-width: 1.5px;
+			div.palette {
+				border-style:solid;
+				border-width:1px; 
+				width:70px; 
+				height:70px; 
+				position:relative; 
+				left:10px; 
+				border-radius:20px;
+				opacity:0.7;
+			}
+			div.palette:hover{
+				opacity:1 !important;
 			}
     	</style>
 	</head>
 	<body>
-		<h1 style="color:white; position:absolute; left:620px">DrawWithMe</h1>
-		<p id="num_clients" style="color:white; position:absolute; left:1350px"><p>
+		<h1 style="color:white; position:absolute; left:700px">DrawWithMe</h1>
+		<p id="num_clients" style="color:white; position:absolute; left:1500px"><p>
 		<form id="textField" style="position:absolute; top:70px;">
 			<input type="text" id="text" style="width:200px; height:25px;"></input>
 			<button type="button" onclick="postText();" style="height:25px;">Submit</button>
 		</form>
-		<div id="messageBoard" style="color:white; font-size:8pt; position:absolute; left:10px; top:100px; border-top-style:dotted; border-top-color:white; border-top-width:1px; width:260; height:720">
+		<div id="messageBoard" style="color:white; font-size:8pt; position:absolute; left:10px; top:100px; border-top-style:dotted; border-top-color:white; border-top-width:1px; width:260; height:800"></div>
+		<div id="palette" style="color:white; font-size:8pt; position:absolute; left:1550px; top:100px; border-top-style:dotted; border-top-color:white; border-top-width:1px; width:85; height:800; border-left-style:dotted; border-left-color:white; border-left-width:1px;">
+			<p></p>
+			<div id="white" style="background:white; border-color:white; opacity:1;" class="palette"></div>
+			<p></p>
+			<div id="yellow" style="background:yellow; border-color:yellow;" class="palette"></div>
+			<p></p>
+			<div id="#FFA500" style="background:#FFA500; border-color:#FFA500;" class="palette"></div>
+			<p></p>
+			<div id="red" style="background:red; border-color:red;" class="palette"></div>
+			<p></p>
+			<div id="green" style="background:green; border-color:green;" class="palette"></div>
+			<p></p>
+			<div id="#00FFFF" style="background:#00FFFF; border-color:#00FFFF;" class="palette"></div>
+			<p></p>
+			<div id="blue" style="background:blue; border-color:blue;" class="palette"></div>
+			<p></p>
+			<div id="#FF00FF" style="background:#FF00FF; border-color:#FF00FF;" class="palette"></div>
+			<p></p>
+			<div id="#A52A2A" style="background:#A52A2A; border-color:#A52A2A;" class="palette"></div>
+			<p></p>
+			
 		</div>
 	</body>
 	<script type="text/javascript" src="/static/js/circles.js"></script>
+	<script type="text/javascript" src="/static/js/colors.js"></script>
 	<script type="text/javascript" src="/static/js/posttext.js"></script>
 </html>

@@ -17,7 +17,6 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 		self.write_message({"message":'',"count":len(websockets), "sender": user_id, "first": 'True', "users":users})
 		user_id = user_id + 1
 	def on_message(self, message):
-		print message
 		message = simplejson.loads(message)
 		for ws in websockets:
 			ws.write_message({"message":message['message'],"count":len(websockets), "sender":message['sender']})
