@@ -3,10 +3,20 @@ var users = {};
 ws.onmessage = function(event) {
 	var data = $.parseJSON(event.data);
 	var message = data.message
-	if (data.first === 'True'){
+	if (data["type"] === 'first'){
 		user_id = data.sender;
 		users = data.users;
 		displayCount(data.count);
+		if (data.count < 2){
+			svginit();
+		}
+	}
+	else if (data['type'] == 'init'){
+		$("#svghome").append(message);
+		svg = d3.select("#svg").on("mousemove", sendDrawData);
+	}
+	else if (message === 'returnsvg'){
+		ws.send('{"message":"' + getsvgstring() + '", "type":"init", "sender":'+ data.sender +'}');
 	}
 	else if (message === 'resetprev'){
 		users[data.sender] = {"x":null,"y":null};

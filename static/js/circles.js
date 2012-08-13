@@ -15,26 +15,23 @@ var w = 1280,
     color = "white";
     i = 0;
 
-var svg = d3.select("body").append("svg:svg")
-    .attr("id", "svg")
-    .attr("width", w)
-    .attr("height", h)
-    .style("pointer-events", "all")
-    .style("position", "absolute")
-    .style("left", 270)
-    .style("top", 100)
-    .style("border-left-style", "dotted")
-    .style("border-left-width", "1px")
-    .style("border-left-color", "white")
-    .style("border-top-style", "dotted")
-    .style("border-top-width", "1px")
-    .style("border-top-color", "white")
-    .on("mousemove", sendDrawData);
+function svginit(){
+  svg = d3.select("#svghome").append("svg:svg")
+      .attr("id", "svg")
+      .attr("width", w)
+      .attr("height", h)
+      .style("pointer-events", "all")
+      .style("position", "absolute")
+      .on("mousemove", sendDrawData);
+}
 
-var elements = [];
+function getsvgstring(){
+  var svg_xml = (new XMLSerializer).serializeToString($("#svg")[0]).replace(/\"/g,'\'');
+  return svg_xml;
+}
 
 function particle(x,y, sender, color) {
-  var circle = svg.append("svg:circle")
+  svg.append("svg:circle")
       .attr("cx", x)
       .attr("cy", y)
       .attr("r", 1)
@@ -42,7 +39,7 @@ function particle(x,y, sender, color) {
       .style("stroke-opacity", 1)
       .style("fill", color)
   if (typeof(users[parseInt(sender)].x) === 'number'){
-    var line = svg.append("svg:line")
+    svg.append("svg:line")
       .attr('x1',users[sender].x)
       .attr('y1',users[sender].y)
       .attr('x2',x)
