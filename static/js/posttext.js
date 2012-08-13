@@ -12,11 +12,12 @@ ws.onmessage = function(event) {
 		}
 	}
 	else if (data['type'] == 'init'){
-		$("#svghome").append(message);
+		$("#svghome").append(message["svg"]);
+		$("#messageBoard").append(message['messages']);
 		svg = d3.select("#svg").on("mousemove", sendDrawData);
 	}
 	else if (message === 'returnsvg'){
-		ws.send('{"message":"' + getsvgstring() + '", "type":"init", "sender":'+ data.sender +'}');
+		ws.send('{"message":' + getsvgstring() + ', "type":"init", "sender":'+ data.sender +'}');
 	}
 	else if (message === 'resetprev'){
 		users[data.sender] = {"x":null,"y":null};
@@ -24,6 +25,9 @@ ws.onmessage = function(event) {
 	}
 	else if (message === 'clear'){
 		clear();
+	}
+	else if (message === 'clearmessages'){
+		clearmessages();
 	}
 	else if (typeof(message.x) === 'number'){
 		particle(message.x,message.y, data.sender, message.color);
@@ -63,4 +67,13 @@ function displayCount(count){
 		text = count + " users online.";
 	}
 	$("#num_clients").text(text);
+}
+
+//send the clearmessages message
+$("#clearmessages").click(function(){
+  ws.send('{"message":"clearmessages", "sender":' + user_id + '}');
+});
+
+function clearmessages(){
+	$("#messageBoard").children().remove();
 }

@@ -26,8 +26,16 @@ function svginit(){
 }
 
 function getsvgstring(){
-  var svg_xml = (new XMLSerializer).serializeToString($("#svg")[0]).replace(/\"/g,'\'');
-  return svg_xml;
+  serializer = new XMLSerializer;
+  var svg_xml = serializer.serializeToString($("#svg")[0]).replace(/\"/g,'\'');
+  messages = $("#messageBoard").children();
+  var messages_xml = ""
+  for (i=0;i<messages.length;i++){
+    messages_xml += serializer.serializeToString(messages[i]);
+    if (i > 33) break;
+  }
+  messages_xml = messages_xml.replace(/\"/g,'\'');
+  return '{"svg":"' + svg_xml + '","messages":"' + messages_xml + '"}';
 }
 
 function particle(x,y, sender, color) {
