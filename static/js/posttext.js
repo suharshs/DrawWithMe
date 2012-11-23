@@ -2,7 +2,7 @@ var ws = new WebSocket("ws://localhost:8888/websocket");
 var users = {};
 ws.onmessage = function(event) {
 	var data = $.parseJSON(event.data);
-	var message = data.message
+	var message = data.message;
 	if (data["type"] === 'first'){
 		user_id = data.sender;
 		users = data.users;
@@ -33,7 +33,7 @@ ws.onmessage = function(event) {
 		particle(message.x,message.y, data.sender, message.color);
 	}
 	else{
-		if (data.users != undefined){
+		if (data.users !== undefined){
 			users = data.users;
 		}
 		displayMessage(data.message);
@@ -50,7 +50,7 @@ $('#text').keypress(function(event){
 
 function postText(){
 	ws.send('{"message":"' + $("#text").val() + '", "sender":' + user_id + '}');
-	$("#text").val('')
+	$("#text").val('');
 }
 
 function displayMessage(message){

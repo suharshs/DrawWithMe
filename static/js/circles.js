@@ -1,11 +1,11 @@
 // This function checks what position the mouse is in.
-var MouseDown = false
+var MouseDown = false;
 $(document).ready(function() {
     $('body').mousedown(function() {
         MouseDown = true;
     })
     .mouseup(function() {
-        ws.send('{"message":"resetprev", "sender":' + user_id + '}')
+        ws.send('{"message":"resetprev", "sender":' + user_id + '}');
         MouseDown = false;
     });
 });
@@ -29,7 +29,7 @@ function getsvgstring(){
   serializer = new XMLSerializer;
   var svg_xml = serializer.serializeToString($("#svg")[0]).replace(/\"/g,'\'');
   messages = $("#messageBoard").children();
-  var messages_xml = ""
+  var messages_xml = "";
   for (i=0;i<messages.length;i++){
     messages_xml += serializer.serializeToString(messages[i]);
     if (i > 33) break;

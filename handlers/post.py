@@ -21,7 +21,6 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 		self.write_message({"message":'',"count":len(websockets), "sender": user_id, "type": 'first', "users":users})
 		user_id = user_id + 1
 	def on_message(self, message):
-		print message
 		message = simplejson.loads(message)
 		if "type" in message and message['type'] == 'init':
 			usersocket[message['sender']].write_message(message)
