@@ -1,4 +1,4 @@
-var ws = new WebSocket("ws://localhost:8888/websocket");
+var ws = new WebSocket("ws://" + window.location.host + "/websocket");
 var users = {};
 ws.onmessage = function(event) {
 	var data = $.parseJSON(event.data);

@@ -14,8 +14,8 @@
 			div.palette {
 				border-style:solid;
 				border-width:1px; 
-				width:70px; 
-				height:70px; 
+				width:60px; 
+				height:60px; 
 				position:relative; 
 				left:10px; 
 				border-radius:20px;
@@ -27,17 +27,18 @@
     	</style>
 	</head>
 	<body>
-		<h1 style="color:white; position:absolute; left:700px">DrawWithMe</h1>
-		<p id="num_clients" style="color:white; position:absolute; left:1500px"><p>
+		<a style="color:white;" href="http://www.suharshs.com">More about me</a>
+		<h1 style="color:white; position:absolute; left:650px">DrawWithMe</h1>
+		<p id="num_clients" style="color:white; position:absolute; left:1200px"><p>
 		<form id="textField" style="position:absolute; top:70px;">
 			<input type="text" id="text" style="width:200px; height:25px;"></input>
 			<button type="button" onclick="postText();" style="height:25px;">Submit</button>
 		</form>
-		<button id="clear" type="button" style="height:25px; position:absolute; left:1500px; top:70px;">Clear</button>
-		<button id="clearmessages" type="button" style="height:25px; position:relative; left:5px; top:890px;">Clear</button>
-		<div id="messageBoard" style="color:white; font-size:8pt; position:absolute; left:10px; top:100px; border-top-style:solid; border-top-color:white; border-top-width:2px; width:260; height:800; overflow:hidden;">
+		<button id="clear" type="button" style="height:25px; position:absolute; left:1110px; top:70px;">Clear Canvas</button>
+		<button id="clearmessages" type="button" style="height:25px; position:relative; left:5px; top:750px;">Clear Messages</button>
+		<div id="messageBoard" style="color:white; font-size:8pt; position:absolute; left:10px; top:100px; border-top-style:solid; border-top-color:white; border-top-width:2px; width:260; height:680; overflow:hidden;">
 		</div>
-		<div id="palette" style="color:white; font-size:8pt; position:absolute; left:1550px; top:100px; border-top-style:solid; border-top-color:white; border-top-width:2px; width:85; height:800; border-left-style:solid; border-left-color:white; border-left-width:1px;">
+		<div id="palette" style="color:white; font-size:8pt; position:absolute; left:1275px; top:100px; border-top-style:solid; border-top-color:white; border-top-width:2px; width:85; height:680; border-left-style:solid; border-left-color:white; border-left-width:1px;">
 			<p></p>
 			<div id="white" style="background:white; border-color:white; opacity:1;" class="palette"></div>
 			<p></p>
@@ -58,7 +59,7 @@
 			<div id="#A52A2A" style="background:#A52A2A; border-color:#A52A2A;" class="palette"></div>
 			<p></p>
 		</div>
-		<div id="svghome" style="border-top-style:solid; border-top-color:white; border-top-width:2px; width:85; height:800; border-left-style:solid; border-left-color:white; border-left-width:1px; width:1280px; height:800px; position:absolute; left:270px; top:100px;">
+		<div id="svghome" style="border-top-style:solid; border-top-color:white; border-top-width:2px; width:85; height:800; border-left-style:solid; border-left-color:white; border-left-width:1px; width:1000px; height:680px; position:absolute; left:270px; top:100px;">
 		</div>
 	</body>
 	<script type="text/javascript" src="/static/js/circles.js"></script>

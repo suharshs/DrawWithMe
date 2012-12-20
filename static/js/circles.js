@@ -10,8 +10,8 @@ $(document).ready(function() {
     });
 });
 
-var w = 1280,
-    h = 800,
+var w = 1000,
+    h = 680,
     color = "white";
     i = 0;
 
